@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خدمات أم سليمان الإلكترونية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary: #2C5F6E;
+    --gold: #C49A3C;
+    --light-gold: #F5E6C8;
+    --bg: #F8F5F0;
+    --white: #ffffff;
+    --dark: #1a2e35;
+    --soft: #EAF4F7;
+    --green: #2d7a4f;
+    --pink: #c9577a;
+  }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    direction: rtl;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #1a3d4a 60%, #0f2830 100%);
+    color: white;
+    padding: 50px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 220px; height: 220px;
+    background: rgba(196,154,60,0.12);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    background: rgba(196,154,60,0.1);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .hero h1 span {
+    color: var(--gold);
+  }
+  .hero p {
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 28px;
+  }
+
+  /* WHATSAPP */
+  .whatsapp-section {
+    background: #f0fdf4;
+    border: 2px solid #bbf7d0;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin: 0 16px;
+    margin-top: -20px;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .wa-title {
+    font-size: 13px;
+    color: #166534;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 12px 28px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.35);
+    transition: transform 0.2s;
+  }
+  .wa-btn:hover { transform: scale(1.03); }
+  .wa-icon { font-size: 22px; }
+  .warning-box {
+    margin-top: 12px;
+    background: #fff3cd;
+    border: 1.5px solid #ffc107;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #7a4f00;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: right;
+  }
+  .warning-box span { font-size: 18px; }
+
+  /* SECTION */
+  .section {
+    padding: 30px 16px 10px;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--primary);
+    border-right: 4px solid var(--gold);
+    padding-right: 12px;
+    margin-bottom: 18px;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .service-card {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--primary);
+    transition: transform 0.2s;
+  }
+  .service-card:hover { transform: translateY(-3px); }
+  .service-card.gold { border-top-color: var(--gold); }
+  .service-card.green { border-top-color: var(--green); }
+  .service-card.pink { border-top-color: var(--pink); }
+  .service-icon { font-size: 26px; margin-bottom: 8px; }
+  .service-name {
+    font-size: 13px;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .service-list {
+    list-style: none;
+    padding: 0;
+  }
+  .service-list li {
+    font-size: 11px;
+    color: #555;
+    padding: 2px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .service-list li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  /* INSURANCE SECTION */
+  .insurance-card {
+    background: linear-gradient(135deg, #1a3d4a, var(--primary));
+    color: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .insurance-card h3 {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--gold);
+  }
+  .amounts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .amount-item {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .amount-item .num { font-size: 15px; font-weight: 900; color: var(--gold); }
+  .amount-item .label { font-size: 10px; opacity: 0.8; }
+
+  /* CONDITIONS */
+  .conditions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .condition-item {
+    background: white;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .condition-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* WHO */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .who-card {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .who-card .icon { font-size: 24px; margin-bottom: 6px; }
+
+  /* AMOUNTS TABLE */
+  .amounts-table {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .amounts-table .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+  }
+  .amounts-table .row:last-child { border-bottom: none; }
+  .amounts-table .row:nth-child(even) { background: #fafafa; }
+  .amounts-table .row .members { font-weight: 700; color: var(--primary); }
+  .amounts-table .row .amount { font-weight: 900; color: var(--pink); }
+
+  /* TRUST */
+  .trust-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .trust-item {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .trust-item .t-icon { font-size: 22px; margin-bottom: 4px; }
+  .trust-item .t-label { font-size: 11px; font-weight: 700; color: var(--dark); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 24px 16px;
+    margin-top: 30px;
+  }
+  .footer h3 { font-size: 16px; font-weight: 900; margin-bottom: 4px; }
+  .footer p { font-size: 12px; opacity: 0.6; }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px 0;
+  }
+
+  .note-box {
+    background: #fff8e1;
+    border-right: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #5a3e00;
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">موثوق ومعتمد 100%</div>
+  <h1>خدمات <span>أم سليمان</span><br>الإلكترونية</h1>
+  <p>تسهيل معاملاتك... باحتراف وموثوقية<br>خدمات سريعة | إجراءات نظامية | متابعة حتى الإنجاز</p>
+</div>
+
+<!-- WHATSAPP -->
+<div class="whatsapp-section">
+  <div class="wa-title">📲 للتواصل والاستفسار عبر واتساب فقط</div>
+  <a href="https://wa.me/966502005954" class="wa-btn" target="_blank">
+    <span class="wa-icon">💬</span>
+    0502005954
+  </a>
+  <div class="warning-box">
+    <span>⚠️</span>
+    <div>تنبيه: يُرجى التواصل عبر <strong>واتساب فقط</strong> — لا تتصل ولا ترسل رسائل مزعجة. سيتم تجاهل الأرقام غير الملتزمة.</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section">
+  <div class="section-title">خدماتنا</div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <div class="service-name">تسجيل الضمان الاجتماعي</div>
+      <ul class="service-list">
+        <li>تسجيل جديد في الضمان</li>
+        <li>حل الطلبات المرفوضة</li>
+        <li>إضافة وتحديث البيانات</li>
+      </ul>
+    </div>
+    <div class="service-card gold">
+      <div class="service-icon">🏦</div>
+      <div class="service-name">حساب المواطن</div>
+      <ul class="service-list">
+        <li>تسجيل جديد في البرنامج</li>
+        <li>تحديث البيانات</li>
+        <li>حل الدفعات والمشاكل</li>
+      </ul>
+    </div>
+    <div class="service-card green">
+      <div class="service-icon">🏠</div>
+      <div class="service-name">عقود إيجار كاملة</div>
+      <ul class="service-list">
+        <li>عقود سكنية وتجارية</li>
+        <li>مدة سنة كاملة</li>
+        <li>موثقة ومعتمدة</li>
+      </ul>
+    </div>
+    <div class="service-card pink">
+      <div class="service-icon">📍</div>
+      <div class="service-name">عنوان وطني</div>
+      <ul class="service-list">
+        <li>تسجيل عنوان وطني جديد</li>
+        <li>تحديث البيانات</li>
+        <li>ربط الخدمات الحكومية</li>
+      </ul>
+    </div>
+    <div class="service-card gold">
+      <div class="service-icon">🏛️</div>
+      <div class="service-name">فتح حسابات البنوك</div>
+      <ul class="service-list">
+        <li>جميع البنوك السعودية</li>
+        <li>بدون الحاجة لزيارة الفرع</li>
+        <li>إجراءات سهلة وسريعة</li>
+      </ul>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👨‍👩‍👧</div>
+      <div class="service-name">تحديث الإخوان</div>
+      <ul class="service-list">
+        <li>تحديث بيانات التابعين</li>
+        <li>إضافة مواليد جدد</li>
+        <li>تسجيل زوجة / أبناء</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- INSURANCE AMOUNTS -->
+<div class="section">
+  <div class="section-title">مبالغ الضمان الاجتماعي المطور</div>
+
+  <div class="insurance-card">
+    <h3>الحد الأدنى للمعاش (قبل وبعد التطوير)</h3>
+    <div class="amounts-grid">
+      <div class="amount-item">
+        <div class="label">العائل — قبل</div>
+        <div class="num">1100 ر</div>
+      </div>
+      <div class="amount-item">
+        <div class="label">العائل — بعد</div>
+        <div class="num">1320 ر</div>
+      </div>
+      <div class="amount-item">
+        <div class="label">التابع — قبل</div>
+        <div class="num">550 ر</div>
+      </div>
+      <div class="amount-item">
+        <div class="label">التابع — بعد</div>
+        <div class="num">660 ر</div>
+      </div>
+    </div>
+    <div style="margin-top:12px; text-align:center; font-size:13px; background:rgba(196,154,60,0.2); border-radius:8px; padding:8px; font-weight:700; color:var(--light-gold);">
+      بحد أقصى 5000 ريال للأسرة الواحدة
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:10px;">مبالغ المستفيدين بدون دخل</div>
+  <div class="amounts-table">
+    <div class="row"><span class="members">1 فرد</span><span class="amount">1,476 ر</span></div>
+    <div class="row"><span class="members">2 أفراد</span><span class="amount">2,237 ر</span></div>
+    <div class="row"><span class="members">3 أفراد</span><span class="amount">3,010 ر</span></div>
+    <div class="row"><span class="members">4 أفراد</span><span class="amount">3,766 ر</span></div>
+    <div class="row"><span class="members">5 أفراد</span><span class="amount">4,546 ر</span></div>
+    <div class="row"><span class="members">6 أفراد</span><span class="amount">5,330 ر</span></div>
+    <div class="row"><span class="members">7 أفراد</span><span class="amount">5,834 ر</span></div>
+    <div class="row"><span class="members">8 أفراد</span><span class="amount">5,918 ر</span></div>
+    <div class="row"><span class="members">9 أفراد</span><span class="amount">6,090 ر</span></div>
+    <div class="row"><span class="members">10 أفراد</span><span class="amount">6,174 ر</span></div>
+  </div>
+  <div class="note-box">
+    💡 لذوي الدخل يتم احتساب الدعم بناءً على الراتب ويتم تحديد الاستحقاق بشكل فردي.
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- CONDITIONS -->
+<div class="section">
+  <div class="section-title">شروط ومتطلبات الضمان</div>
+  <div class="conditions-list">
+    <div class="condition-item">
+      <span class="condition-icon">🇸🇦</span>
+      <div>الدعم مخصص لجميع السعوديين سواء كانوا عاطلين أو موظفين</div>
+    </div>
+    <div class="condition-item">
+      <span class="condition-icon">📝</span>
+      <div>التسجيل يكون باسم الزوج أو الزوجة أو الأرملة</div>
+    </div>
+    <div class="condition-item">
+      <span class="condition-icon">💼</span>
+      <div>إذا كنت موظف أو موظفة، يُمنح راتب إضافي فوق راتبك الأساسي</div>
+    </div>
+    <div class="condition-item">
+      <span class="condition-icon">👩‍👧</span>
+      <div>المطلقة بتابعين تقدر تسجل بصك الحضانة أو من دونه</div>
+    </div>
+    <div class="condition-item">
+      <span class="condition-icon">🏡</span>
+      <div>العزباء والمطلقة والأرملة بدون أبناء: لا بد من إثبات سكن</div>
+    </div>
+    <div class="condition-item">
+      <span class="condition-icon">👵</span>
+      <div>الجدة ومعها أحفادها: يحق لها التسجيل والاستفادة</div>
+    </div>
+    <div class="condition-item">
+      <span class="condition-icon">🏘️</span>
+      <div>الضمان المطور ينزل للفرد المستقل بـ 1400 ريال بشرط عقد إيجار</div>
+    </div>
+    <div class="condition-item" style="background:#fff0f0; border-right:3px solid var(--pink);">
+      <span class="condition-icon">⚠️</span>
+      <div><strong>تنبيه:</strong> إذا وقف الضمان هذا الشهر، احذف الحساب وتقدم من جديد بعد 24 ساعة</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- TRUST -->
+<div class="section">
+  <div class="section-title">لماذا تختارنا؟</div>
+  <div class="trust-row">
+    <div class="trust-item">
+      <div class="t-icon">✅</div>
+      <div class="t-label">موثوق ومعتمد</div>
+    </div>
+    <div class="trust-item">
+      <div class="t-icon">⚡</div>
+      <div class="t-label">إنجاز سريع</div>
+    </div>
+    <div class="trust-item">
+      <div class="t-icon">📞</div>
+      <div class="t-label">متابعة مستمرة</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div style="padding: 20px 16px;">
+  <div class="whatsapp-section">
+    <div class="wa-title">📲 تواصلي معنا الآن عبر واتساب</div>
+    <a href="https://wa.me/966502005954" class="wa-btn" target="_blank">
+      <span class="wa-icon">💬</span>
+      0502005954
+    </a>
+    <div class="warning-box">
+      <span>🚫</span>
+      <div><strong>ممنوع الاتصال المباشر أو الإزعاج</strong> — واتساب فقط للتواصل والاستفسار</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <h3>خدمات أم سليمان الإلكترونية</h3>
+  <p>نسعى لتقديم أفضل خدمة لعملائنا</p>
+</div>
+
+</body>
+</html>
